@@ -83,4 +83,24 @@ public class MercadoDAO {
 
         return linhasAlfetadas;
     }
+
+
+    public int alterar(String descricao, Long id) throws SQLException, ClassNotFoundException {
+        String sqlQuery = "UPDATE mercado SET descricao = ? WHERE id = ?";
+        int linhasAfetadas = 0;
+
+        try {
+            PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
+            stmt.setString(1, descricao);
+            stmt.setLong(2, id);
+
+            linhasAfetadas = stmt.executeUpdate();
+            this.conexao.commit();
+        } catch (SQLException e) {
+            this.conexao.rollback();
+            throw e;
+        }
+
+        return linhasAfetadas;
+    }
 }
