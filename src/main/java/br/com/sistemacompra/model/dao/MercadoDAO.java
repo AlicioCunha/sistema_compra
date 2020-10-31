@@ -7,6 +7,8 @@ import br.com.sistemacompra.model.Mercado;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MercadoDAO {
 
@@ -36,5 +38,30 @@ public class MercadoDAO {
         }
     }
 
+    public List<Mercado> listar() throws SQLException, ClassNotFoundException {
+        String sqlQuery = "select * from mercado ORDER BY id";
 
+        try {
+            PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
+            ResultSet rs = stmt.executeQuery();
+
+            List<Mercado> mercados = new ArrayList<>();
+
+            while (rs.next()) {
+                mercados.add(parser(rs));
+            }
+
+            return mercados;
+        } catch (SQLException e) {
+            throw e;
+        }
+    }
+
+
+    private Mercado parser(ResultSet resultSet) throws SQLException {
+        Mercado mercado = new Mercado();
+        mercado.setId(resultSet.getLong("id"));
+        mercado.setDescricao(resultSet.getString("descricao"));
+        return mercado;
+    }
 }
