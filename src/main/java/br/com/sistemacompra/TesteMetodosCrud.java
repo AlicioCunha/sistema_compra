@@ -24,5 +24,11 @@ public class TesteMetodosCrud {
 
         delmercado.excluir(7);
 
+         /*
+        Alterar registro
+         */
+        MercadoDAO mercadoAlterar = new MercadoDAO();
+        mercadoAlterar.alterar("Mercado Thiago", 13L);
+
     }
 }
