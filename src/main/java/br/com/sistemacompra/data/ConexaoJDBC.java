@@ -5,12 +5,12 @@ import java.sql.SQLException;
 
 public interface ConexaoJDBC {
 
-    public Connection getConnection();
+    Connection getConnection();
 
-    public void close();
+    void close();
 
-    public void commit() throws SQLException;
+    void commit() throws SQLException;
 
-    public void rollback();
+    void rollback();
 
 }
