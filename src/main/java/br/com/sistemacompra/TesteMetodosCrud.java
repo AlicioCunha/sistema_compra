@@ -9,6 +9,15 @@ public class TesteMetodosCrud {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         MercadoDAO mercadoDAO1 = new MercadoDAO();
 
-        mercadoDAO1.inserir("Bistek");
+        mercadoDAO1.inserir("INFORMAR UM MERCADO AQUI");
+
+
+
+        /*
+        Listando tudo da tabela de mercado
+         */
+        MercadoDAO mercadoDAO = new MercadoDAO();
+        mercadoDAO.listar();
+        System.out.println( mercadoDAO.listar());
     }
 }
