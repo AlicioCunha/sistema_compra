@@ -7,11 +7,11 @@ import java.sql.SQLException;
 public class TesteMetodosCrud {
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
+        /*
+        Inserir novo registro
+         */
         MercadoDAO mercadoDAO1 = new MercadoDAO();
-
         mercadoDAO1.inserir("INFORMAR UM MERCADO AQUI");
-
-
 
         /*
         Listando tudo da tabela de mercado
@@ -19,5 +19,10 @@ public class TesteMetodosCrud {
         MercadoDAO mercadoDAO = new MercadoDAO();
         mercadoDAO.listar();
         System.out.println( mercadoDAO.listar());
+
+        MercadoDAO delmercado = new MercadoDAO();
+
+        delmercado.excluir(7);
+
     }
 }

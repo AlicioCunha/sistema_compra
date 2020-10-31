@@ -64,4 +64,23 @@ public class MercadoDAO {
         mercado.setDescricao(resultSet.getString("descricao"));
         return mercado;
     }
+
+
+
+    public int excluir(long id) throws SQLException, ClassNotFoundException {
+        int linhasAlfetadas = 0;
+        String sqlQuery = "DELETE FROM mercado WHERE id = ?";
+
+        try {
+            PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
+            stmt.setLong(1, id);
+            linhasAlfetadas = stmt.executeUpdate();
+            this.conexao.commit();
+        } catch (SQLException e) {
+            this.conexao.rollback();
+            throw e;
+        }
+
+        return linhasAlfetadas;
+    }
 }
