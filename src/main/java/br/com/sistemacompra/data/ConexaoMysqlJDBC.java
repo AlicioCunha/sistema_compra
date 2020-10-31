@@ -20,7 +20,7 @@ public class ConexaoMysqlJDBC implements ConexaoJDBC {
     private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/sistema_compra?useTimezone=true&serverTimezone=UTC";
 
     public ConexaoMysqlJDBC() throws SQLException, ClassNotFoundException {
-        Class.forName("com.mysql.jdbc.Driver");
+        Class.forName("com.mysql.cj.jdbc.Driver");
         this.connection = DriverManager.getConnection(DATABASE_URL, USERNAME, PASSWORD);
         this.connection.setAutoCommit(false);
     }
